@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function computerPlay() {
+            let arr = ["rock", "paper", "scissors"];
+            return arr[Math.floor(Math.random() * 3)];
+        }
+
+        function round(computer, player) {
+            player = player.toLowerCase();
+            if ((computer == "scissors" && player == "paper") || (computer == "paper" && player == "rock") || (
+                    computer == "rock" && player == "scissors")) {
+                return "Computer Wins: " + computer + " beats " + player;
+            } else if ((player == "scissors" && computer == "paper") || (player == "paper" && computer == "rock") || (
+                    player == "rock" && computer == "scissors")) {
+                return "You Lose!: " + player + " beats " + computer;
+            } else if (computer == player) {
+                return "forfeit!";
+            }
+        }
+        function roundGame(computer, player) {
+            player = player.toLowerCase();
+            if ((computer == "scissors" && player == "paper") || (computer == "paper" && player == "rock") || (
+                    computer == "rock" && player == "scissors")) {
+                return 1;
+            } else if ((player == "scissors" && computer == "paper") || (player == "paper" && computer == "rock") || (
+                    player == "rock" && computer == "scissors")) {
+                return 2;
+            } else if (computer == player) {
+                return 0;
+            }
+        }
+        function game(){
+            let pc = 0;
+            let pl = 0;
+            for(let i=1;i<=5; i++){
+                let result = round(computerPlay(),prompt());
+                if(result == 1){
+                    pc++;
+                }
+                else if(result == 2){
+                    pl++;
+                }
+                else{
+                    //nothing
+                }
+            }
+            if(pl>pc) return "You Won";
+            else if (pc>pl) return "You lost";
+            else return "Its a tie!"
+        }
+      // console.log(round(computerPlay(),prompt()));
+        console.log(game());
+    </script>
+    test
+
+</body>
+
+</html>
