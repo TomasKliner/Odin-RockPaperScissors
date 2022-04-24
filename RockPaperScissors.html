@@ -9,7 +9,21 @@
 </head>
 
 <body>
+    <button id="0">Rock</button>
+    <button id="1">Paper</button>
+    <button id="2">Scissors</button>
+
     <script>
+        document.getElementById("0").addEventListener("click", function () {
+            console.log(round(computerPlay(), "Rock"));
+        });
+        document.getElementById("1").addEventListener("click", function () {
+            console.log(round(computerPlay(), "Paper"));
+        });
+        document.getElementById("2").addEventListener("click", function () {
+            console.log(round(computerPlay(), "scissors"));
+        });
+
         function computerPlay() {
             let arr = ["rock", "paper", "scissors"];
             return arr[Math.floor(Math.random() * 3)];
@@ -27,6 +41,7 @@
                 return "forfeit!";
             }
         }
+
         function roundGame(computer, player) {
             player = player.toLowerCase();
             if ((computer == "scissors" && player == "paper") || (computer == "paper" && player == "rock") || (
@@ -39,30 +54,27 @@
                 return 0;
             }
         }
-        function game(){
+
+        function game() {
             let pc = 0;
             let pl = 0;
-            for(let i=1;i<=5; i++){
-                let result = roundGame(computerPlay(),prompt());
-                if(result == 1){
+            for (let i = 1; i <= 5; i++) {
+                let result = roundGame(computerPlay(), prompt());
+                if (result == 1) {
                     pc++;
-                }
-                else if(result == 2){
+                } else if (result == 2) {
                     pl++;
-                }
-                else{
+                } else {
                     //nothing
                 }
             }
-            if(pl>pc) return "You Won";
-            else if (pc>pl) return "You lost";
+            if (pl > pc) return "You Won";
+            else if (pc > pl) return "You lost";
             else return "Its a tie!"
         }
-      // console.log(round(computerPlay(),prompt()));
-        console.log(game());
+        // console.log(round(computerPlay(),prompt()));
+        //console.log(game());
     </script>
-    test
-
 </body>
 
 </html>
