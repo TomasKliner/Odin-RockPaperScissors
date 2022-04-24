@@ -12,17 +12,46 @@
     <button id="0">Rock</button>
     <button id="1">Paper</button>
     <button id="2">Scissors</button>
+    <h1 id="GameMessage"></h1>
+    <h3 id="message"></h3>
+    <h2 id="pcScore">0</h2>
+    <h2 id="yourScore">0</h1>
+    
 
     <script>
         document.getElementById("0").addEventListener("click", function () {
-            console.log(round(computerPlay(), "Rock"));
+            let x = roundGame(computerPlay(), "Rock");
+            score(x);
         });
         document.getElementById("1").addEventListener("click", function () {
-            console.log(round(computerPlay(), "Paper"));
+            let x = roundGame(computerPlay(), "Paper");
+            score(x);
         });
         document.getElementById("2").addEventListener("click", function () {
-            console.log(round(computerPlay(), "scissors"));
+            let x = roundGame(computerPlay(), "Scissors");
+            score(x);
         });
+        
+        function score(x){
+            let pcScore = document.getElementById("pcScore").innerText;
+            let myScore= document.getElementById("yourScore").innerText;
+
+            if(pcScore == "3"){
+                pcScore = myScore = 0;
+                document.getElementById("GameMessage").innerText = "You Lost the series!";
+            }
+            else if(myScore == "3"){
+                pcScore = myScore = 0;
+                document.getElementById("GameMessage").innerText = "You Won the series!";
+            }
+            else {
+                if(x==2) ++myScore;
+                else if (x==1) ++pcScore
+                document.getElementById("GameMessage").innerText = "";
+            }
+            document.getElementById("pcScore").innerText = pcScore;
+            document.getElementById("yourScore").innerText = myScore;
+        }
 
         function computerPlay() {
             let arr = ["rock", "paper", "scissors"];
@@ -33,10 +62,10 @@
             player = player.toLowerCase();
             if ((computer == "scissors" && player == "paper") || (computer == "paper" && player == "rock") || (
                     computer == "rock" && player == "scissors")) {
-                return "Computer Wins: " + computer + " beats " + player;
+                return "You lose!: : " + computer + " beats " + player;
             } else if ((player == "scissors" && computer == "paper") || (player == "paper" && computer == "rock") || (
                     player == "rock" && computer == "scissors")) {
-                return "You Lose!: " + player + " beats " + computer;
+                return "You Win!: " + player + " beats " + computer;
             } else if (computer == player) {
                 return "forfeit!";
             }
